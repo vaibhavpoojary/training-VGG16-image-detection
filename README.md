@@ -1,52 +1,111 @@
+🚗 Car Brand Detector
 
-# Brain Tumor Detection with VGG16 (Transfer Learning)
+This project is a deep learning–powered car brand classification system built with TensorFlow/Keras. It can classify images of cars into 7 categories and also supports real-time webcam detection.
 
-This project trains a **VGG16‑based image classifier** to detect brain tumors from MRI images using **transfer learning**. The workflow is implemented in a single Jupyter notebook:
+📌 Features
 
-- **`brain_tumor.ipynb`** — end‑to‑end training, evaluation, and (optionally) inference.
+Upload a car image through a Flask web app and get the predicted brand with confidence score.
 
-> **Why VGG16?** It’s a proven convolutional backbone for image tasks, simple to fine‑tune, and widely available via Keras/TensorFlow.
+Supported classes:
 
----
+Audi
 
-## ✨ Key Features
+Hyundai Creta
 
-- Transfer learning with **VGG16 (ImageNet weights)**
-- Data loading & augmentation via Keras `ImageDataGenerator`
-- Freezing base layers + custom classification head
-- Training curves, metrics, and confusion‑matrix style evaluation
-- Optional single‑image prediction utilities
+Mahindra Scorpio
 
----
+Rolls Royce
 
-## ⚙️ Environment & Prerequisites
+Swift
 
-### Python / OS
-- **Recommended (Windows):** Python **3.11** (TensorFlow provides official Windows wheels up to 3.11 for TF 2.20). If you need Python 3.12/3.13 on Windows, use **WSL2 (Ubuntu)** or Linux for TensorFlow wheels. [1](https://www.tensorflow.org/install/pip)
-- **Linux/macOS:** Python 3.9–3.13 are available for TF 2.20 on Linux; macOS supports CPU wheels. See the TF install guide for details. [1](https://www.tensorflow.org/install/pip)
-### TensorFlow I/O note (GCS filesystem)
-Starting with **TensorFlow 2.20**, the `tensorflow-io-gcs-filesystem` package is **optional** and not installed by default. Install it only if you explicitly need to read/write to **Google Cloud Storage** (GCS). [2](https://github.com/tensorflow/tensorflow/releases)
+Tata Safari
 
-> On Windows, new wheels for `tensorflow-io-gcs-filesystem` have had **limited/unstable availability**, which can trigger the “No matching distribution found” pip error. If you don’t use GCS, omit the package entirely. [3](https://github.com/tensorflow/io/issues/2087)
+Toyota Innova
 
----
+Webcam live detection using OpenCV.
 
-## 🔧 Quick Start
+Displays real-time predictions with confidence overlay.
 
-> Below are **two** safe setup paths. If you’re on Windows and don’t need GPU, **Option A** is the quickest.
+🛠️ Installation
+1. Clone the repository
+git clone https://github.com/yourusername/carmodel-detector.git
+cd carmodel-detector
 
-### Option A — Native Windows (CPU) with Python 3.11
+2. Create and activate virtual environment
+python -m venv venv
+venv\Scripts\activate   # On Windows
+source venv/bin/activate # On Linux/Mac
 
-```powershell
-# 1) Create & activate a clean venv (Python 3.11)
-py -3.11 -m venv .venv
-.\.venv\Scripts\Activate.ps1
+3. Install dependencies
+pip install -r requirements.txt
 
-# 2) Upgrade pip
-python -m pip install --upgrade pip
 
-# 3) Install core deps
-pip install tensorflow==2.20.0  # CPU build on Windows (official wheels for py3.11)
-pip install numpy matplotlib pillow scikit-learn
-# If your notebook imports extras (e.g., opencv-python, seaborn), install them too:
-# pip install opencv-python seaborn
+requirements.txt example:
+
+Flask
+tensorflow
+numpy==1.23.5
+opencv-python==4.7.0.72
+matplotlib
+
+🚀 Usage
+1. Run Flask app (image upload detection)
+python app.py
+
+
+Then open in your browser:
+👉 http://127.0.0.1:5000/
+
+Upload an image, and the model will display the predicted brand and confidence score.
+
+2. Run Webcam Live Detection
+python webcam_detector.py
+
+
+A window will open showing your webcam feed.
+
+Predictions will appear on top of each frame.
+
+Press q to quit.
+
+📂 Project Structure
+carmodel-detector/
+│── app.py               # Flask app for image upload detection
+│── webcam_detector.py   # OpenCV-based live webcam detection
+│── carmodel.h5          # Trained Keras model
+│── uploads/             # Folder to store uploaded images
+│── templates/
+│   └── index.html       # Web app frontend
+│── requirements.txt     # Dependencies
+│── README.md            # Project documentation
+
+📊 Model Training
+
+Trained on a custom dataset of 7 car brands.
+
+Image size: 128x128.
+
+Accuracy achieved: 96%+ on training set.
+
+📸 Example
+
+Web app upload result:
+Audi (Confidence: 97.52%)
+
+Webcam live detection:
+Real-time overlay of car brand prediction on video frames.
+
+✅ Future Improvements
+
+Add support for more car brands.
+
+Improve generalization with larger dataset.
+
+Deploy model on cloud (AWS/GCP/Heroku).
+
+Add top-3 predictions for better explainability.
+
+👨‍💻 Author
+
+Vaibhava Poojary
+AI/ML & GenAI Engineer | AWS | TensorFlow | LangChain
