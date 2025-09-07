@@ -1,9 +1,9 @@
 
-# Brain Tumor Detection with VGG16 (Transfer Learning)
+# Image detection with VGG16 (Transfer Learning)
 
-This project trains a **VGG16‑based image classifier** to detect brain tumors from MRI images using **transfer learning**. The workflow is implemented in a single Jupyter notebook:
+This project trains a **VGG16‑based image classifier** to detect images using **transfer learning**. The workflow is implemented in a single Jupyter notebook:
 
-- **`brain_tumor.ipynb`** — end‑to‑end training, evaluation, and (optionally) inference.
+This repo contains the image detector models under different branches 
 
 > **Why VGG16?** It’s a proven convolutional backbone for image tasks, simple to fine‑tune, and widely available via Keras/TensorFlow.
 
